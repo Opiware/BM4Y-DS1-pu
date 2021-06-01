@@ -1,27 +1,35 @@
+# BM4Y-DS1 OpiDigi Signage Player
+
+#### BM4Y-DS1
+* OpiBerry Embedded ARM Cortex-A72/A53.
+
+* Software Guide / OpiDigi Signage Player
 
 
-                               BM4Y-DS1
-                OpiBerry Embedded ARM Cortex-A72/A53
-               Software Guide / OpiDigi Signage Player
-
-
-BM4Y-DS1 OpiDigi Signage Player
-  Linux based built-in Chromium Brower
-  Play resources from Internet, local network or local folders
-  Display more attractive resources, easily
+#### BM4Y-DS1 OpiDigi Signage Player
+  * Linux based built-in Chromium Brower
+  
+  * Play resources from Internet, local network or local folders
+  
+  * Display more attractive resources, easily
+  
 [BM3BP-hwfrontb1.jpg ; BM3BP-hwfrontw1.jpg ; BM4Y-DS1-DS1.jpg]
 
 
-Copyright © Opiware Solutions. All Rights Reserved. | Version: 0.1  2020 Nov.
+*Copyright © Opiware Solutions. All Rights Reserved. | Version: 0.1  2020 Nov.*
 
 
-                                                        BM4Y-DS1 Software Guide
+## BM4Y-DS1 Software Guide
+
 -------------------------------------------------------------------------------
 
-Trademarks
+#### Trademarks
+
 The Opiware logo is a registered trademark of Opiware Solutions. All other trademarks or registered marks in this manual belong to their respective manufacturers.
 
-Disclaimer
+
+#### Disclaimer
+
 Information in this document is subject to change without notice and does not represent a commitment on the part of Opiware.
 
 Opiware provides this document as is, without warranty of any kind, either expressed or implied, including, but not limited to, its particular purpose. Opiware reserves the right to make improvements and/or changes to this manual, or to the products and/or the programs described in this manual, at any time.
@@ -31,63 +39,36 @@ Information provided in this manual is intended to be accurate and reliable. How
 This product might include unintentional technical or typographical errors. Changes are periodically made to the information herein to correct such errors, and these changes are incorporated into new editions of the publication
 
 
-                                                        BM4Y-DS1 Software Guide
--------------------------------------------------------------------------------
-
-                         Document Amendment History
-Revision    Date         Remark
-V 0.1       2020 Nov.    Initial Doc
-
-
-                                                        BM4Y-DS1 Software Guide
--------------------------------------------------------------------------------
-
-                             Table of Contents
-1. Overview ................................................................. 5
-2. Connect to the Network .................................................. 10
-    2.1 The Linux WebRDS OS ............................................. 10
-    2.2 Network admin interface ............................................ 10
-    2.3 Admin interface .................................................... 10
-3. Configuration ........................................................... 15
-4. Plugins ................................................................. 20
-    4.1 Web Kiosk plugin ................................................... 20
-    4.2 WordPress plugin ................................................... 20
-4. 5. FAQ .................................................................. 25
-
-
-                                                        BM4Y-DS1 Software Guide
--------------------------------------------------------------------------------
-
-1. Overview
+## 1. Overview
 WebRDS based Digital Signage is an operating system built-in Chromium Brower GUI that is designed to always run fullscreen restricted to a specified Single App Kiosk Mode do not allow the user to exit the app. They're great for a purpose-built device, such as this OpiDigi Signage Player.
 
 It shows web resources from Internet, local network or local folders (in RPi itself as the source webserver. It’s up to user to configure the internal web page). Application usages are, use it display TV advertising screen, electronic signs, booking site, queue or timetable management web app or create superb web presentations with Youtube, Google Slides (Powerpoint compatible) or similar software.
 
 WebRDS comes with the latest Chromium builds (featuring HTML5/CSS3/JavaScripy capabilities), so you can display more attractive resources, more easily.
 
-2. Connect to the Network
+## 2. Connect to the Network
 
-2.1 The Linux WebRDS OS is pre-installed and shippped with the RPi hardware assembled. When you first plug in power to the RPi, it will show a black screen and then some text will appear as it boots up. If the RPi connects to your Internet router using the Ethernet wired cable, it will show some text of network diagnostics info, take note of this page as it will display your IP address, which you will need later.
+#### 2.1 The Linux WebRDS OS is pre-installed and shippped with the RPi hardware assembled. When you first plug in power to the RPi, it will show a black screen and then some text will appear as it boots up. If the RPi connects to your Internet router using the Ethernet wired cable, it will show some text of network diagnostics info, take note of this page as it will display your IP address, which you will need later.
 
----------------------------------------
-[RDS-netinfo.png ;Network Info screen]
-eth0 ; lo ; wlan0
----------------------------------------
+*RDS-netinfo.png ;Network Info screen*
 
-2.2 Network admin interface: If no wired network is available, it boots up showing the Network Settings page, login using the default login [user:admin/pswd:admin123], where you can setup your network connection wired or wireless to access to the RPi. Once you select a connection method, perform reboot to take effect.
+*eth0 ; lo ; wlan0*
 
----------------------------------------
-[RDS-netset.png ;Network Settings screen]
-Wired network (Ethernet)
-Wireless networks (802.11) near you
----------------------------------------
+
+#### 2.2 Network admin interface: If no wired network is available, it boots up showing the Network Settings page, login using the default login [user:admin/pswd:admin123], where you can setup your network connection wired or wireless to access to the RPi. Once you select a connection method, perform reboot to take effect.
+
+*RDS-netset.png ;Network Settings screen*
+
+*Wired network (Ethernet)*
+
+*Wireless networks (802.11) near you*
+
 
 Wireless networks: It should list out the available WIFI networks. Select your network, then enter the password and click connect. Note: You might have to click connect and let it run twice.
 
-2.3 Admin interface: If wired or wireless network is available, it boots up in full-screen kiosk mode displaying the configured web resource. System’s IP address is shown on screen upon boot. To configure the system, browse from your PC to <http://<IP_ADDRESS>/settings>. Once network is set, administration can/must be performed remotely via browser, without physical access to the RPi. You can always modify RPi’s network connection by browsing from your PC to <http://<IP_ADDRESS>/networks>.
+#### 2.3 Admin interface: If wired or wireless network is available, it boots up in full-screen kiosk mode displaying the configured web resource. System’s IP address is shown on screen upon boot. To configure the system, browse from your PC to *http://<IP_ADDRESS>/settings* . Once network is set, administration can/must be performed remotely via browser, without physical access to the RPi. You can always modify RPi’s network connection by browsing from your PC to *http://<IP_ADDRESS>/networks*.
 
----------------------------------------
-[RDS-sigset.png ;Signage settings screen]
+*RDS-sigset.png ;Signage settings screen*
 
 Chromium settings
 Make all Chromium settings <persistent>: all modifies you apply to Chromium will be saved (browser configuration requires physical/VNC access to the Pi). Toggle to <default settings> again.
@@ -145,13 +126,15 @@ You cannot exit to the console in any way except stopping the CDS service via SS
 
 Kiosk mode with visible address bar: WebRDS is designed for digital signage installations – it’s a full-screen browser-face system. The <Web Kiosk plugin> adds an address bar and tunes the system in a way it can be used for “web workstations” (often found in cafès, offices, schools, hotels, hospitals, libraries), where people can freely surf the web; a stylish “address bar” becomes available, even if the browser is in full-screen mode.
 
-3. Configuration
+  
+## 3. Configuration
 
 Using SSH: You can SSH into the RPi in order to set up the underlying Raspbian operating system (usage is similar to standard Debian OS) and configure WebRDS without a GUI as well.
 
 3.1 SSH: Perform an SSH login with the following clients:
 *nix users will make use of the native ssh client – open the terminal emulator and type:
-~$ ssh rds-user@IP_ADDRESS
+  
+`~$ ssh rds-user@IP_ADDRESS`
 
 3.2 Windows users will use Putty, MobaXTerm, or any similar program. Use the following default credentials: [user:rds-user/password:admin123] Once in, type:
 ~$ sudo -i  ;for administrative rights (root)
@@ -167,7 +150,8 @@ Modify the config file of your interest in the /etc/rds/ folder and then restart
 
 * For the rotation, the /boot/config.txt file is used by the WebRDS stack.
 
-4. Plugins: See the plugins page in following.
+  
+## 4. Plugins: See the plugins page in following.
 
 4.1 Web Kiosk plugin: This plugin adds an address bar to WebRDS and tunes it in a system suitable for usage in web kiosks and multi-user web workstations environments (cafès, offices, schools, hotels, hospitals, libraries), where people can freely surf the web. WebRDS with the Web Kiosk plugin replaces the older RPi WebKiosk.
 
@@ -235,4 +219,4 @@ Uninstall
 ~# apt --purge remove rds-plugin-wordpress*
 ~# rm -R /rds/var/www/wordpress/wp-content
 
-5. FAQ: All Frequently asked question.
+## 5. FAQ: All Frequently asked question.
