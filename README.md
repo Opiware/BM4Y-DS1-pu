@@ -1,12 +1,12 @@
 # BM4Y-DS1 OpiDigi Signage Player
 
-#### BM4Y-DS1
+### BM4Y-DS1
 * OpiBerry Embedded ARM Cortex-A72/A53.
 
 * Software Guide / OpiDigi Signage Player
 
 
-#### BM4Y-DS1 OpiDigi Signage Player
+### BM4Y-DS1 OpiDigi Signage Player
   * Linux based built-in Chromium Brower
   
   * Play resources from Internet, local network or local folders
@@ -17,9 +17,6 @@
 
 
 *Copyright © Opiware Solutions. All Rights Reserved. | Version: 0.1  2020 Nov.*
-
-
-## BM4Y-DS1 Software Guide
 
 -------------------------------------------------------------------------------
 
@@ -70,10 +67,12 @@ Wireless networks: It should list out the available WIFI networks. Select your n
 
 *RDS-sigset.png ;Signage settings screen*
 
-Chromium settings
+**Chromium settings**
+
 Make all Chromium settings <persistent>: all modifies you apply to Chromium will be saved (browser configuration requires physical/VNC access to the Pi). Toggle to <default settings> again.
 
-Admin interface password
+**Admin interface password**
+ 
 Change the <password> for this admin interface. This will also change the password of the login for the rds-user (SSH, too) and the VNC password.
 
 Kiosk settings
@@ -83,9 +82,9 @@ Kiosk settings
 * Set HTTP proxy [example 10.11.12.13:80]         : 
 * Halt system at [UTC 24h, hh:mm]                 : 
 <SAVE AND START KIOSK>
----------------------------------------
 
 Chromium settings: While you can configure the system via the aforementioned settings web page quite completely, when you need to modify browser’s settings and extensions a virtual access to the whole RPi’s screen is required: just browse to the settings page via browser and then access the RPi by using VNC default [password:admin123]. This way you can customize the browser as you wish.
+ 
 * In order for your settings to be saved, make all Chromium settings persistent. Why this?
 Every time system reloads or is rebooted, the browser is kept back to default settings or last-saved settings, which are “clean”, for security reasons.
 
@@ -103,22 +102,25 @@ Some default Chromium extensions are installed:
 * tabtiles <https://Chromium.google.com/webstore/detail/tabtiles/aaeapgfkbbbdpbfjmpcblemfajmkiddh> (disabled). Enable this if you need to display a useful pseudo-navigation menu (if the displayed resource opens window popups).
 * Url slideshow <https://Chromium.google.com/webstore/detail/url-slideshow/pdblffiahfjjldpkngdpaegghhamefam> (enabled). Configure it to turn the signage in a slideshow of web sites (check the extension’s options Start on browser start and Fullscreen).
 
----------------------------------------
 [RDS-sysset.png ;System settings screen]
 
-Locale
+**Locale**
+ 
 Set browser locale and keymap: [English (US) (default)]
 
-Video Resolution
+**Video Resolution**
+ 
 View screen resolutions: show available (not all resolutions are usable by the Pi).
 Set resolution: [1824 x 984] | <save and use.>
 
-Zoom
+**Zoom**
+ 
 Set zoom (for HiDPI screens): [Select zoom level...]
 
-Video Rotation
+**Video Rotation**
+ 
 Rotation: (*)normal ()left ()right ()reverse | <apply> (system will be rebooted).
----------------------------------------
+ 
 
 Kiosk mode: WebRDS boots in full-screen (kiosk) mode displaying the saved web resource with all the saved settings applied; mouse pointer auto-hides in some seconds of inactivity. For security reasons, some keyboard keys are disabled.
 
@@ -131,17 +133,20 @@ Kiosk mode with visible address bar: WebRDS is designed for digital signage inst
 
 Using SSH: You can SSH into the RPi in order to set up the underlying Raspbian operating system (usage is similar to standard Debian OS) and configure WebRDS without a GUI as well.
 
-3.1 SSH: Perform an SSH login with the following clients:
+#### 3.1 SSH: Perform an SSH login with the following clients:
+ 
 *nix users will make use of the native ssh client – open the terminal emulator and type:
   
 `~$ ssh rds-user@IP_ADDRESS`
-
-3.2 Windows users will use Putty, MobaXTerm, or any similar program. Use the following default credentials: [user:rds-user/password:admin123] Once in, type:
-~$ sudo -i  ;for administrative rights (root)
+ 
+#### 3.2 Windows users will use Putty, MobaXTerm, or any similar program. Use the following default credentials: [user:rds-user/password:admin123] Once in, type:
+ 
+`~$ sudo -i  ;for administrative rights (root)`
 
 When admin screen password is modified, SSH password will be changed accordingly. So, if you set a password for the admin interface, the new SSH password will be identical. This way you can protect both system settings’ modification via browser (admin interface) and via SSH with one step. Please change the default SSH password for your security.
 
-3.3 Configure the system via SSH
+#### 3.3 Configure the system via SSH
+ 
 Modify the config file of your interest in the /etc/rds/ folder and then restart the WebRDS service: ~# systemctl restart rds
 
 * For the network, standard /etc/network/interfaces.d/* and /etc/resolv.conf files are used.
@@ -153,7 +158,7 @@ Modify the config file of your interest in the /etc/rds/ folder and then restart
   
 ## 4. Plugins: See the plugins page in following.
 
-4.1 Web Kiosk plugin: This plugin adds an address bar to WebRDS and tunes it in a system suitable for usage in web kiosks and multi-user web workstations environments (cafès, offices, schools, hotels, hospitals, libraries), where people can freely surf the web. WebRDS with the Web Kiosk plugin replaces the older RPi WebKiosk.
+#### 4.1 Web Kiosk plugin: This plugin adds an address bar to WebRDS and tunes it in a system suitable for usage in web kiosks and multi-user web workstations environments (cafès, offices, schools, hotels, hospitals, libraries), where people can freely surf the web. WebRDS with the Web Kiosk plugin replaces the older RPi WebKiosk.
 
 Example images (click to view) [RDS-wk-webkiosk1.png ; RDS-wk-webkiosk2.png]
 
@@ -166,7 +171,7 @@ Install: From a SSH terminal of WebRDS, as root:
 Uninstall:
 ~# apt --purge remove -y rds-plugin-webkiosk*
 
-4.2 WordPress plugin: WebRDS admin interface allows you to type in the URL of the web resource to be displayed; it can be an Internet one (https://www.opiware.com), a LAN URL (http://192.168.1.28/booking; http://booking.lan), or even a resource located internally, inside the Raspberry Pi’s filesystem.
+#### 4.2 WordPress plugin: WebRDS admin interface allows you to type in the URL of the web resource to be displayed; it can be an Internet one (https://www.opiware.com), a LAN URL (http://192.168.1.28/booking; http://booking.lan), or even a resource located internally, inside the Raspberry Pi’s filesystem.
 
 To simplify the management of the internal site setup, the wordpress plugin adds a WordPress installation to the system (/rds/var/www/wordpress).
 
@@ -206,14 +211,14 @@ connectionCheck()
 
 Browsing whitelist: In order to add an internal filtering HTTP proxy with a whitelist behaviour (users allowed to browse only a specific set of sites), use follow the steps.
 
-4.2.1 Install tinyproxy via apt and change its config file to include:
+##### 4.2.1 Install tinyproxy via apt and change its config file to include:
 FilterURLs On
 FilterDefaultDeny Yes
 Filter "/etc/tinyproxy/whitelist"
 
-4.2.2 Create a whitelist with only the domains that you want the user to browse (when displaying your websites, make sure no resource loading is blocked by the whitelist; use the Chromium’s developer console for the purpose).
+##### 4.2.2 Create a whitelist with only the domains that you want the user to browse (when displaying your websites, make sure no resource loading is blocked by the whitelist; use the Chromium’s developer console for the purpose).
 
-4.2.3 Set localhost:8888 as the proxy server in the admin interface.
+##### 4.2.3 Set localhost:8888 as the proxy server in the admin interface.
 
 Uninstall
 ~# apt --purge remove rds-plugin-wordpress*
