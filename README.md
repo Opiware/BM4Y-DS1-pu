@@ -147,7 +147,7 @@ When admin screen password is modified, SSH password will be changed accordingly
 
 #### 3.3 Configure the system via SSH
  
-Modify the config file of your interest in the /etc/rds/ folder and then restart the WebRDS service: ~# systemctl restart rds
+Modify the config file of your interest in the /etc/rds/ folder and then restart the WebRDS service: `~# systemctl restart rds`
 
 * For the network, standard /etc/network/interfaces.d/* and /etc/resolv.conf files are used.
 
@@ -165,11 +165,14 @@ Example images (click to view) [RDS-wk-webkiosk1.png ; RDS-wk-webkiosk2.png]
 Requirements: This plugin requires WebRDS >= v.13.1
 
 Install: From a SSH terminal of WebRDS, as root:
-~# cd /root/libtools/
-~# dpkg -i rds-plugin-webkiosk*.deb
+ 
+`~# cd /root/libtools/`
+ 
+`~# dpkg -i rds-plugin-webkiosk*.deb`
 
 Uninstall:
-~# apt --purge remove -y rds-plugin-webkiosk*
+ 
+`~# apt --purge remove -y rds-plugin-webkiosk*`
 
 #### 4.2 WordPress plugin: WebRDS admin interface allows you to type in the URL of the web resource to be displayed; it can be an Internet one (https://www.opiware.com), a LAN URL (http://192.168.1.28/booking; http://booking.lan), or even a resource located internally, inside the Raspberry Pi’s filesystem.
 
@@ -180,17 +183,24 @@ To simplify the management of the internal site setup, the wordpress plugin adds
 Requirements: This plugin requires WebRDS >= v.13.1
 
 Install: From a SSH terminal of WebRDS, as root:
-~# apt update
-~# cd /root/libtools/
-~# dpkg -i rds-plugin-wordpress*.deb ; ~# apt install -f -y
+ 
+`~# apt update`
+ 
+`~# cd /root/libtools/`
+ 
+`~# dpkg -i rds-plugin-wordpress*.deb` ; `~# apt install -f -y`
 
 Depending on the packages installed, a different php-mysql package could be required:
-~# apt install -y php7.1-mysql
-~# systemctl restart apache2
-~# systemctl restart rds
+ 
+`~# apt install -y php7.1-mysql`
+ 
+`~# systemctl restart apache2`
+ 
+`~# systemctl restart rds`
 
 Prerequisites: In order to view (and administer) the RPi’s WordPress site from your PC, just add the following line to your PC hosts file:
 RaspberryPi_LAN_IP  wordpress
+ 
 For example: 192.168.0.28  wordpress
 
 This way, your PC will identify the URL <http://wordpress> as coming from the Pi. Google for what “hosts” file means if unsure.
@@ -198,22 +208,26 @@ This way, your PC will identify the URL <http://wordpress> as coming from the Pi
 Usage: Set up your site on the internal WordPress installation: as a normal WordPress site, by browsing from your PC to <http://wordpress>
 
 WordPress admin login is: [admin/password]
+ 
 Remember to change it. Opiware won’t give basis/informations on how to use WordPress.
 
 Make WebRDS display it: from the admin interface, set <http://wordpress> as the kiosk URL.
 
 Disable network check: Upon boot, the system checks for the availability of the network, in order to display the proper admin interface if no network is available. However, with an internal WordPress installation, the network check could be unwanted: in case, modify /rds/home/rds-user/.xinitrc as:
 
-connectionCheck()
+`connectionCheck()
 {
     return 0
-}
+}`
 
 Browsing whitelist: In order to add an internal filtering HTTP proxy with a whitelist behaviour (users allowed to browse only a specific set of sites), use follow the steps.
 
 ##### 4.2.1 Install tinyproxy via apt and change its config file to include:
+ 
 FilterURLs On
+ 
 FilterDefaultDeny Yes
+ 
 Filter "/etc/tinyproxy/whitelist"
 
 ##### 4.2.2 Create a whitelist with only the domains that you want the user to browse (when displaying your websites, make sure no resource loading is blocked by the whitelist; use the Chromium’s developer console for the purpose).
@@ -221,7 +235,8 @@ Filter "/etc/tinyproxy/whitelist"
 ##### 4.2.3 Set localhost:8888 as the proxy server in the admin interface.
 
 Uninstall
-~# apt --purge remove rds-plugin-wordpress*
-~# rm -R /rds/var/www/wordpress/wp-content
+ 
+`~# apt --purge remove rds-plugin-wordpress*`
+`~# rm -R /rds/var/www/wordpress/wp-content`
 
 ## 5. FAQ: All Frequently asked question.
